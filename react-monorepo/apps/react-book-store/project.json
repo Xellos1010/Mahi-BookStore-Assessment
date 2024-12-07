@@ -5,5 +5,37 @@
   "projectType": "application",
   "tags": [],
   "// targets": "to see all targets run: nx show project react-book-store --web",
-  "targets": {}
+  "targets": {
+    "build": {
+      "executor": "@nx/vite:build",
+      "options": {
+        "outputPath": "dist/apps/react-book-store",
+        "configFile": "apps/react-book-store/vite.config.ts"
+      }
+    },
+    "serve": {
+      "executor": "@nx/vite:dev-server",
+      "options": {
+        "buildTarget": "react-book-store:build",
+        "configFile": "apps/react-book-store/vite.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/react-book-store/**/*.ts",
+          "apps/react-book-store/**/*.tsx"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "apps/react-book-store/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/apps/react-book-store"]
+    }
+  }
 }
