@@ -1,9 +1,4 @@
 # NX Files
-# NX specific
-.nx/installation
-.nx/cache
-.nx/workspace-data
-.nx/deps/
 
 # Node modules
 /node_modules/
